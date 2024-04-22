@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if category %}
+<div>
+    <p>Our Products Category</p>
+</div>
+{% endif %}
+<div>
+    {% if category %}
+    <img src="{{category.image.url}}" style="height:600px; width:1500px;">
+
+</div>
+<br>
+<div>
+    <h1>{{category.name}}</h1>
+    <p>{{category.desc}}</p>
+</div>
+{% else %}
+<div>
+    <img src="{% static 'images/images.jpg' %}" alt="wallpaper image" style="width:1600px; height:500px;">
+</div>
+
+<div>
+    <h1 style="text-align:center; color:red;">Explore our Products here!!!</h1>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+</div>
+{% endif %}
+<div class="row">
+{% for prod in product %}
+    <div class="col-9 col-sm-12 col-md-4">
+<div class="card text-center" style="width: 18rem;">
+  <img src="{{prod.image.url}}" class="card-img-top" style="width:250px;height:250px; alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{prod.name}}</h5>
+    <p class="card-text">{{prod.price}}</p>
+    <a href="#" class="btn btn-primary">Add to Cart</a>
+  </div>
+</div>
+    </div>
+{% endfor %}
+    </div>
+{% endblock %}
